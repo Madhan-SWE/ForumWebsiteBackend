@@ -1,0 +1,154 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Forum Website Sample</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+        >
+        <link rel="stylesheet" href="../styleSheets/style.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Discussion Forum</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">View Content <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Topics</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Topic" aria-label="Search Topic">
+                <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-dark my-2 my-sm-0 logoutBtn" type="submit">Logout</button>
+              </form>
+            </div>
+          </nav>
+        <div class="container">
+            
+
+            <div class="row searchRow">
+                <div class="col-lg-4">
+                    <div class="form-group row searchForm">
+                        <label for="example-date-input" class="col-4 col-form-label">From Date:</label>
+                        <div class="col-8">
+                          <input class="form-control" type="date" value="dd-mm-yyyy" id="example-date-input">
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group row searchForm">
+                        <label for="example-date-input" class="col-4 col-form-label">To Date:</label>
+                        <div class="col-8">
+                          <input class="form-control" type="date" value="dd-mm-yyyy" id="example-date-input">
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group row">
+                        <div class="col-12 searchForm">
+                            <select class="custom-select">
+                                <option selected>Auto</option>
+                                <option value="1">10</option>
+                                <option value="2">20</option>
+                                <option value="3">50</option>
+                              </select>
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-5 text-center p-2">Sachein</h1>
+                    <div class="contentDiv shadow rounded p-3 mb-5">
+                        Sachein is a 2005 Indian Tamil-language romantic comedy film directed by John Mahendran, and produced by Kalaippuli S. Thanu, starring Vijay and Genelia, Bipasha Basu in lead roles, with Vadivelu, Santhanam and Raghuvaran appearing in supporting roles. The film marks Bipasha's Tamil debut.The score and soundtrack is composed by Devi Sri Prasad.[1] Jeeva and V. T. Vijayan handled the cinematography and editing respectively. The film released on 14 April 2005, on Tamil New Year's Day.
+                        <div class="row">
+                            <div class="col-lg-6 text-left p-2">
+                                <h3>Madhankumar</h3>
+                                <p>12-12-20, 8:32 PM</p>
+                            </div>
+                            <div class="actionButtons col-lg-6 text-right p-2">
+                                <button type="button" class="btn btn-primary">Edit</button>
+                                <button type="button" class="btn btn-warning">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="contentDiv shadow rounded p-3 mb-5">
+                        Sachein is a 2005 Indian Tamil-language romantic comedy film directed by John Mahendran, and produced by Kalaippuli S. Thanu, starring Vijay and Genelia, Bipasha Basu in lead roles, with Vadivelu, Santhanam and Raghuvaran appearing in supporting roles. The film marks Bipasha's Tamil debut.The score and soundtrack is composed by Devi Sri Prasad.[1] Jeeva and V. T. Vijayan handled the cinematography and editing respectively. The film released on 14 April 2005, on Tamil New Year's Day.
+                        <div class="row">
+                            <div class="col-lg-6 text-left p-2">
+                                <h3>Madhankumar</h3>
+                                <p>12-12-20, 8:32 PM</p>
+                            </div>
+                            <div class="actionButtons col-lg-6 text-right p-2">
+                                <button type="button" class="btn btn-primary">Edit</button>
+                                <button type="button" class="btn btn-warning">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="contentDiv shadow rounded p-3 mb-5">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Add a reply:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="actionButtons col-lg-6 text-right offset-lg-6 p-2">
+                                <button type="button" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-right">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
