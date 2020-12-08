@@ -25,3 +25,11 @@ body {
 .logoutBtn{
     margin-left: 5px;
 }
+button {
+    margin-left: 5px;
+}
+.btnactive {
+    color: red;
+    background-color: red;
+
+}
