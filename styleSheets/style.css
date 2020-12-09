@@ -33,3 +33,10 @@ button {
     background-color: red;
 
 }
+html {
+    scroll-behavior: smooth;
+  }
+
+#alertDiv {
+    display: none;
+}

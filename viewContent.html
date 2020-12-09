@@ -20,11 +20,14 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Topics</a>
+                </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">View Content <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="viewContent.html">View Content <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Topics</a>
+                  <a class="nav-link" href="createTopics.html">Create Topic</a>
                 </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
@@ -42,7 +45,7 @@
                     <div class="form-group row searchForm">
                         <label for="example-date-input" class="col-4 col-form-label">From Date:</label>
                         <div class="col-8">
-                          <input class="form-control" type="date" value="yy-mm-dd" id="example-date-input">
+                          <input class="form-control" onchange="changeFromDate()" id="fromDate" type="date" value="yy-mm-dd" id="example-date-input">
                         </div>
                       </div>
                 </div>
@@ -50,14 +53,14 @@
                     <div class="form-group row searchForm">
                         <label for="example-date-input" class="col-4 col-form-label">To Date:</label>
                         <div class="col-8">
-                          <input class="form-control" type="date" value="yy-mm-dd" id="example-date-input">
+                          <input class="form-control" type="date" onchange="changeToDate()"  id="toDate" value="yy-mm-dd" id="example-date-input">
                         </div>
                       </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="form-group row">
                         <div class="col-12 searchForm">
-                            <select class="custom-select" onchange="chnagePageSize(this.value)">
+                            <select class="custom-select" onchange="changePageSize(this.value)">
                                 <option selected value="5">Auto</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
@@ -75,6 +78,26 @@
             </div>
 
             <div id="contentSection">
+            </div>
+            <div id="replySection">
+              <div class="contentDiv shadow rounded p-3 mb-5">
+              <div class="row">
+                <div class="col-12">
+                    
+                        <form>
+                            <div class="form-group">
+                                <label for="replyTextArea" id="replyTextAreaLabel">Add a reply: (minimum comment length is 10)</label>
+                                <textarea class="form-control" id="replyTextArea" onkeyup="enableButton()" rows="3"></textarea>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="actionButtons col-lg-6 text-right offset-lg-6 p-2">
+                                <button type="button" class="btn btn-primary" onclick="reply()" id="addButton" disabled>Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
 
             <div class="row">
