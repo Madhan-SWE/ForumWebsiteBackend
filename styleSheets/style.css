@@ -37,6 +37,9 @@ html {
     scroll-behavior: smooth;
   }
 
-#alertDiv {
+#alertDiv, #registerAlertDiv, #loginAlertDiv {
+    display: none;
+}
+#logoutButton {
     display: none;
 }

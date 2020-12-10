@@ -14,48 +14,95 @@
     <body onload="loadContent()">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="#">Discussion Forum</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
             </button>
-          
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">Topics</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="viewContent.html">View Content <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="createTopics.html">Create Topic</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Topic" aria-label="Search Topic">
-                <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
-                <button class="btn btn-dark my-2 my-sm-0 logoutBtn" type="submit">Logout</button>
-              </form>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Topics</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="viewContent.html">
+                            View Content
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a class="nav-link disabled" id="createTopics" href="createTopics.html">Create Topic</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input
+                        class="form-control mr-sm-2"
+                        type="search"
+                        placeholder="Search Topic"
+                        aria-label="Search Topic"
+                        id="searchText"
+                    >
+                    <button class="btn btn-danger my-2 my-sm-0" onclick="searchTextFn()" type="button">Search</button>
+                    <button
+                        class="btn btn-dark my-2 my-sm-0 logoutBtn"
+                        type="button"
+                        id="logoutButton"
+                        onclick="logout()"
+                    >Logout</button>
+                    <button
+                        class="btn btn-warning my-2 my-sm-0 loginBtn"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#loginForm"
+                        id="loginButton"
+                    >Login</button>
+                    <button
+                        class="btn btn-success my-2 my-sm-0 registerBtn"
+                        type="button"
+                        data-toggle="modal"
+                        data-target="#modalRegisterForm"
+                        id="registerButton"
+                    >Register</button>
+                </form>
             </div>
-          </nav>
+        </nav>
         <div class="container">
-            
-
             <div class="row searchRow">
                 <div class="col-lg-4">
                     <div class="form-group row searchForm">
                         <label for="example-date-input" class="col-4 col-form-label">From Date:</label>
                         <div class="col-8">
-                          <input class="form-control" onchange="changeFromDate()" id="fromDate" type="date" value="yy-mm-dd" id="example-date-input">
+                            <input
+                                class="form-control"
+                                onchange="changeFromDate()"
+                                id="fromDate"
+                                type="date"
+                                value="yy-mm-dd"
+                                id="example-date-input"
+                            >
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group row searchForm">
                         <label for="example-date-input" class="col-4 col-form-label">To Date:</label>
                         <div class="col-8">
-                          <input class="form-control" type="date" onchange="changeToDate()"  id="toDate" value="yy-mm-dd" id="example-date-input">
+                            <input
+                                class="form-control"
+                                type="date"
+                                onchange="changeToDate()"
+                                id="toDate"
+                                value="yy-mm-dd"
+                                id="example-date-input"
+                            >
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="form-group row">
@@ -65,56 +112,154 @@
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                                 <option value="20">20</option>
-                              </select>
+                            </select>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
-            <h1 id="topicSection" class="text-center m-3"> </h1>
-            <div class="alert alert-danger" role="alert">
+            <h1 id="topicSection" class="text-center m-3"></h1>
+            <div class="alert alert-danger" role="alert" id="alertDiv">
                 <div class="text-center">
-                    <strong>No content available on this topic !</strong> 
+                    <strong id="alertText">No content available on this topic !</strong>
                 </div>
             </div>
-
-            <div id="contentSection">
-            </div>
+            <div id="contentSection"></div>
             <div id="replySection">
-              <div class="contentDiv shadow rounded p-3 mb-5">
-              <div class="row">
-                <div class="col-12">
-                    
-                        <form>
-                            <div class="form-group">
-                                <label for="replyTextArea" id="replyTextAreaLabel">Add a reply: (minimum comment length is 10)</label>
-                                <textarea class="form-control" id="replyTextArea" onkeyup="enableButton()" rows="3"></textarea>
-                            </div>
-                        </form>
-                        <div class="row">
-                            <div class="actionButtons col-lg-6 text-right offset-lg-6 p-2">
-                                <button type="button" class="btn btn-primary" onclick="reply()" id="addButton" disabled>Comment</button>
+                <div class="contentDiv shadow rounded p-3 mb-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <form>
+                                <div class="form-group">
+                                    <label for="replyTextArea" id="replyTextAreaLabel">Add a reply: (minimum comment length is 10)</label>
+                                    <textarea
+                                        class="form-control"
+                                        id="replyTextArea"
+                                        onkeyup="enableButton()"
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="actionButtons col-lg-6 text-right offset-lg-6 p-2">
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        onclick="reply()"
+                                        id="addButton"
+                                        disabled
+                                    >Comment</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-
             <div class="row">
                 <div class="col-12">
                     <div class="text-right">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-end" id="pages">
-                                
-                            </ul>
+                            <ul class="pagination justify-content-end" id="pages"></ul>
                         </nav>
                     </div>
                 </div>
             </div>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="../scripts/script.js"></script>
-    </body>
+        <div
+            class="modal fade"
+            id="modalRegisterForm"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" role="alert" id="registerAlertDiv">
+                            <div class="text-center">
+                                <strong id="registerAlertText"></strong>
+                            </div>
+                        </div>
+                        <form>
+                            <div class="form-group">
+                                <label for="email" id="emailLabel">Email:</label>
+                                <input type="text" class="form-control" id="email"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" id="nameLabel">Name:</label>
+                            <input type="text" class="form-control" id="name"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" id="passwordLabel">Password:</label>
+                        <input type="password" class="form-control" id="password"></input>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="registerUser()">Register</button>
+        </div>
+    </div>
+</div>
+</div>
+<div
+    class="modal fade"
+    id="loginForm"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login:</h5>
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" id="loginAlertDiv">
+                    <div class="text-center">
+                        <strong id="loginAlertText"></strong>
+                    </div>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="loginEmail" id="loginEmailLabel">Email:</label>
+                        <input type="text" class="form-control" id="loginEmail"></input>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" id="loginPasswordLabel">Password:</label>
+                    <input type="password" class="form-control" id="loginPassword"></input>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="loginUser()">Login</button>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="../scripts/script.js"></script>
+</body>
 </html>
